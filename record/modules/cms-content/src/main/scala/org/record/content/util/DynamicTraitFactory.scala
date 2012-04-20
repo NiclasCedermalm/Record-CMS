@@ -139,7 +139,11 @@ class DynamicClassLoader extends java.lang.ClassLoader(DynamicClassLoader.getCla
     val interpreter = new IMain(settings)
 
     println("Compiling class def: " + classDef)
+    
+    // Problem med class loader?
+    
     interpreter.compileString(classDef.toString())
+    println("Class compiled")
     val r = interpreter.classLoader.getResourceAsStream(id)
     val o = new ByteArrayOutputStream
     val b = new Array[Byte](16384)

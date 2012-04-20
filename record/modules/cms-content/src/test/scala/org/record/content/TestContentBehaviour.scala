@@ -11,7 +11,6 @@ import org.record.content.model.data._
 
 object TestContentBehaviour extends App {
 
-  /* TODO: UPDATE!!
   var page = new TextContent(new TextContentData) with TestRenderer;
   page.render(new RenderContext)
   
@@ -28,6 +27,17 @@ object TestContentBehaviour extends App {
   // Test render directly via implicit method
   var page4 = new Page(new PageData) with TestRenderer
   page4.render(new RenderContext)
-  */
+ 
+  
+  // Test page
+  //
+  var testPageData = new PageData
+ 
+    testPageData.title = "Test Page";
+    var pageTemplate = new PlayTemplateData
+    pageTemplate.templateFunctionName = "views.html.pagetemplate1"    
+    testPageData.behaviours += pageTemplate
+    
+    var testPage = testPageData.retrieveRuntimeContent[Page]
   
 }

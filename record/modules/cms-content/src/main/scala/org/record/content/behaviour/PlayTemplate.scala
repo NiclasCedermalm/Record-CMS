@@ -27,6 +27,10 @@ trait PlayTemplate extends Renderer {
 		super.initBehaviour(dataList)
 	}
   	*/
+    
+    def init(templateData : PlayTemplateData) = {
+      templateFunctionName = templateData.templateFunctionName
+    }
   
 	override def render(context: RenderContext) : play.mvc.Content = {
 		println("Invoking template: " + templateFunctionName)

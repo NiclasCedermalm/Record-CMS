@@ -1,7 +1,5 @@
 package org.record.content.model
 
-import scala.collection.JavaConverters._
-import scala.collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
 import org.record.content.NodeItem
 import org.record.content.behaviour.VersionedItem
@@ -9,8 +7,8 @@ import javax.persistence.Id
 import java.util.ArrayList
 import org.record.content.model.data.ContentData
 import org.record.content.util.DynamicTraitFactory
-import org.record.content.behaviour.Behaviour
-import org.record.content.model.data.BehaviourData
+import org.record.content.behaviour._
+import org.record.content.model.data._
 
 /**
  * Runtime Content. All data must be immutable.
@@ -24,8 +22,11 @@ abstract class Content(val contentData : ContentData) extends VersionedItem {
   
   // Initialize behaviours
   //
-  if ( contentData.behaviours.size > 0 ) {
-   // this.asInstanceOf[Behaviour].initBehaviour(contentData.behaviours.toList)
+  // TEMP HARDCODE!!! FIX!!!
+  for ( behaviour <- contentData.behaviours ) {
+    if ( this.isInstanceOf[PlayTemplate] ) {
+      this.asInstanceOf[PlayTemplate].init(behaviour.asInstanceOf[PlayTemplateData])
+    }
   }
 
   

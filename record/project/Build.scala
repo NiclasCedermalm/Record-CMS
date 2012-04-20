@@ -12,18 +12,17 @@ object ApplicationBuild extends Build {
       "com.orientechnologies" % "orientdb-core" % "1.0rc9",
       "com.orientechnologies" % "orientdb-client" % "1.0rc9",
       "com.orientechnologies" % "orient-commons" % "1.0rc9"
-*/
-    )
+*/    )
    
     val cms_content = Project("cms-content", file("modules/cms-content"))
-    /*
+    
     val content = PlayProject(
         "cms-content", appVersion, path = file("modules/cms-content")
-    )*/
+    )
 
     /*val admin = PlayProject(
     	"cms-admin", appVersion, path = file("modules/cms-admin")
-    ).dependsOn(content)
+    ).dependsOn(content) 
     */
     
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

@@ -5,6 +5,6 @@ import scala.collection.mutable.Map
 
 trait Behaviour {
   
- //def initBehaviour(dataList : List[BehaviourData]);
+  //def initBehaviour(dataList : List[BehaviourData]);
   
 }

@@ -15,10 +15,12 @@ abstract class ContentData extends NodeItem {
  
   def retrieveRuntimeContent[T <: Content] : T = {
     println("Getting runtime content for id: " + id)
-    val traitClassNames = behaviours.map(behaviour => behaviour.traitClassName)
+    val traitClassNames = behaviours.map(behaviour => behaviour.getTraitClass.getCanonicalName())
+    println("Classes: " + traitClassNames)
     return DynamicTraitFactory.newInstance(retrieveRuntimeContentClass, Array(this), traitClassNames.toList).asInstanceOf[T]
   }
   
+  // TODO: Refactor!!
   def retrieveRuntimeContentClass : Class[_ <: Content] = {
     val dataClassName = this.getClass.getCanonicalName
     val runtimeClassName = dataClassName.substring(0,dataClassName.length-4).replace(".data.", ".")

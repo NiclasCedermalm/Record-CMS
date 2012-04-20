@@ -5,6 +5,7 @@ import play.api.mvc._
 
 import play.api.templates.Html
 
+import org.record.content.RenderContext
 import org.record.content._
 import org.record.content.behaviour._
 import org.record.content.model._
@@ -45,11 +46,15 @@ object Application extends Controller {
     testPage.children.add(articlePresentation)
     */
     
-    var testPage = new Page(testPageData) with PlayTemplate
-    testPage.templateFunctionName = "views.html.pagetemplate1" // TEMP
+    var testPage = testPageData.retrieveRuntimeContent[Page]
+    println("Created test page: " + testPage)
     
-    //val output = testPage.retrieveRuntimeContent[Page].asInstanceOf[Renderer].render(context).asInstanceOf[Html] 
-    val output = testPage.asInstanceOf[Renderer].render(context).asInstanceOf[Html]
+    //var testPage = new Page(testPageData) with PlayTemplate
+    //testPage.templateFunctionName = "views.html.pagetemplate1" // TEMP
+    
+    val output = testPage.asInstanceOf[Renderer].render(context).asInstanceOf[Html] 
+    
+    //val output = testPage.render(context).asInstanceOf[Html]
     Ok(output)
     
     //Ok(views.html.testpage(testPage))
