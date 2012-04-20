@@ -15,19 +15,21 @@ import org.record.content.model.data._
  */
 
 
-abstract class Content(val contentData : ContentData) extends VersionedItem {
+abstract class Content(val contentData : ContentData) extends VersionedItem with PlayTemplate /* TEMP FIX */ {
   
   val id : String = contentData.id
   val parent : HierarchicalContent = getParent
   
+  templateFunctionName = contentData.templateFunctionName // TEMP FIX
+  
   // Initialize behaviours
   //
   // TEMP HARDCODE!!! FIX!!!
-  for ( behaviour <- contentData.behaviours ) {
+  /*for ( behaviour <- contentData.behaviours ) {
     if ( this.isInstanceOf[PlayTemplate] ) {
       this.asInstanceOf[PlayTemplate].init(behaviour.asInstanceOf[PlayTemplateData])
     }
-  }
+  }*/
 
   
   //val taxonomies: List[Taxonomy] = _

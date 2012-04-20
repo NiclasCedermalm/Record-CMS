@@ -17,7 +17,7 @@
     	<h2>Some test content:</h2>
     	<div>
 	        @for(content <- page.children) {
-			   @RenderManager.render(content, context)
+			   @content.render(context)
 			}
 		</div>
     </body>

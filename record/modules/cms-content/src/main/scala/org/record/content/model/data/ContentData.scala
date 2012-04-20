@@ -12,12 +12,12 @@ abstract class ContentData extends NodeItem {
   
   var behaviours : ListBuffer[BehaviourData] = new ListBuffer[BehaviourData]
   
- 
+   var templateFunctionName: String = _ // TEMP FIX TO SIMPLIFY
+  
   def retrieveRuntimeContent[T <: Content] : T = {
     println("Getting runtime content for id: " + id)
-    val traitClassNames = behaviours.map(behaviour => behaviour.getTraitClass.getCanonicalName())
-    println("Classes: " + traitClassNames)
-    return DynamicTraitFactory.newInstance(retrieveRuntimeContentClass, Array(this), traitClassNames.toList).asInstanceOf[T]
+    //val traitClassNames = behaviours.map(behaviour => behaviour.getTraitClass.getCanonicalName())
+    return DynamicTraitFactory.newInstance(retrieveRuntimeContentClass, Array(this), null/*traitClassNames.toList*/).asInstanceOf[T]
   }
   
   // TODO: Refactor!!

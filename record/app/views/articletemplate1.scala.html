@@ -4,7 +4,7 @@
 @import org.record.content.model._
 
 <div>
-	<h3>@RenderManager.render(content.children("title"),context)</h3>
-	@RenderManager.render(content.children("body"),context)
+	<h3>@content.children("title").render(context)</h3>
+	@content.children("body").render(context)
 
 </div>

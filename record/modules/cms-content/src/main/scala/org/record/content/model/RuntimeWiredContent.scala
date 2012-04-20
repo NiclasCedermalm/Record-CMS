@@ -9,7 +9,7 @@ class RuntimeWiredContent(override val contentData : RuntimeWiredContentData) ex
 
   // TODO: implicit magic to fix target on templates??
 
-  
+  println("Creating new RuntimeWiredContent...")
   val content: Content = {   
    if ( contentData.content != null ) {
      contentData.content.retrieveRuntimeContent
@@ -21,7 +21,7 @@ class RuntimeWiredContent(override val contentData : RuntimeWiredContentData) ex
   
   val children: List[Content] = { 
     if ( contentData.children == null) null
-    contentData.children.toList.map(child => child.retrieveRuntimeContent)
+    contentData.children.toList.map(child => child.retrieveRuntimeContent.asInstanceOf[Content])
   }
   
 }

@@ -16,10 +16,10 @@ object ApplicationBuild extends Build {
    
     val cms_content = Project("cms-content", file("modules/cms-content"))
     
-    val content = PlayProject(
+/*    val content = PlayProject(
         "cms-content", appVersion, path = file("modules/cms-content")
     )
-
+*/
     /*val admin = PlayProject(
     	"cms-admin", appVersion, path = file("modules/cms-admin")
     ).dependsOn(content) 

@@ -33,6 +33,7 @@ object DynamicTraitFactory {
   
   def newInstance(clazz : Class[_ <: AnyRef], arguments : Array[AnyRef], traitClassNames : List[String]) : AnyRef = {
     
+    println("Creating new instance of class: " + clazz)
     var argClasses = new Array[Class[_]](arguments.size)
     for (i <- 0 until arguments.size) {
       argClasses(i) = arguments(i).getClass
@@ -73,7 +74,9 @@ object DynamicTraitFactory {
     if ( argClasses != null ) {
     	argClasses.foreach(argClass => sb.append(argClass.getCanonicalName()).append(":"))
     }
-    traitClassNames.foreach(className => sb.append(className).append(":"))
+    if ( traitClassNames != null ) {
+    	traitClassNames.foreach(className => sb.append(className).append(":"))
+    }
     return sb.toString()
   }
   
