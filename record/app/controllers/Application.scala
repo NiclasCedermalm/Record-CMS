@@ -46,11 +46,11 @@ object Application extends Controller {
     testPage.children.add(articlePresentation)
     */
     
-    var testPage = testPageData.retrieveRuntimeContent[Page]
-    println("Created test page: " + testPage)
+//    var testPage = testPageData.retrieveRuntimeContent[Page]
+//    println("Created test page: " + testPage)
     
-    //var testPage = new Page(testPageData) with PlayTemplate
-    //testPage.templateFunctionName = "views.html.pagetemplate1" // TEMP
+    var testPage = new Page(testPageData) with PlayTemplate
+    testPage.templateFunctionName = "views.html.pagetemplate1" // TEMP
     
     val output = testPage.asInstanceOf[Renderer].render(context).asInstanceOf[Html] 
     

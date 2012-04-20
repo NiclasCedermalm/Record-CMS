@@ -6,7 +6,7 @@ import org.record.content.model.Content
 import org.record.content.RenderContext
 import org.record.content.model.data._
 
-case class CouldNotInvokeTemplateException extends Exception
+case class CouldNotInvokeTemplateException() extends Exception
 
 /**
  * Play Template
