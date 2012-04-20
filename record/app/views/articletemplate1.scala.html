@@ -1,0 +1,10 @@
+@(content: org.record.content.model.CompositeContent, context: org.record.content.RenderContext)
+
+@import org.record.content._
+@import org.record.content.model._
+
+<div>
+	<h3>@RenderManager.render(content.children("title"),context)</h3>
+	@RenderManager.render(content.children("body"),context)
+
+</div>
