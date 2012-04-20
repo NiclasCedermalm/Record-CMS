@@ -7,7 +7,7 @@ import scala.util.control.Breaks._
 import java.lang.reflect.Constructor
 import scala.collection.mutable.HashMap
 
-case class NoMatchingConstructorFound extends Exception
+case class NoMatchingConstructorFound() extends Exception
 
 // TODO: Can we mixin behaviour data here??
 
